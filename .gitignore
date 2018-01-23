@@ -1,0 +1,7 @@
+Library/
+.vs/
+Temp/
+ProjectSettings/
+*.apk
+UnityPackageManager/manifest.json
+*.sln
