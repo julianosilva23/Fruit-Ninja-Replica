@@ -20,11 +20,11 @@ public class Fruit : MonoBehaviour {
 		{
 			//Vector3 direction = (col.transform.position - transform.position).normalized;
             
-            while(gameObject.transform.localScale.x > 0)
-            {
-                gameObject.transform.localScale -= new Vector3(0.001f, 0.001f, 0.001f);
+            //while(gameObject.transform.localScale.x > 0)
+            //{
+                gameObject.transform.localScale -= new Vector3(0.2f, 0.2f, 0.2f);
                 Debug.Log(transform.localScale.x);
-            }
+            //}
             
 
 
