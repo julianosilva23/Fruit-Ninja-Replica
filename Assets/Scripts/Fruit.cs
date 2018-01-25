@@ -17,22 +17,34 @@ public class Fruit : MonoBehaviour {
 
     void Update ()
     {
-        if(corte == true){
-            if(gameObject.transform.localScale.x > 0){
+        if(corte == true && gameObject != null){
+            if(gameObject.transform.localScale.x >= 0.1){
             gameObject.transform.localScale -= new Vector3(Time.deltaTime * 2, Time.deltaTime * 2, Time.deltaTime * 2);            
             }else{
-                Destroy(gameObject, 1.0f);
+                Destroy(gameObject);
             }
         }
     }
-	void OnTriggerEnter2D (Collider2D col)
+	
+    void OnTriggerEnter2D (Collider2D col)
 	{
-		if (col.tag == "Blade")
+		if (col.tag == "Blade" && gameObject != null)
 		{
-			
-            corte = true;
-            gameObject.GetComponent<Collider2D>().enabled = false;            
-                           
+            gameObject.GetComponent<Collider2D>().enabled = false;
+            gameObject.GetComponent<Transform>().GetChild(0).tag = "none";            
+            corte = true;            
+        }
+
+        if (col.tag == "Rede" && gameObject != null &&  gameObject.GetComponent<Collider2D>().enabled == true)
+		{
+           gameObject.GetComponent<Collider2D>().enabled = false;  
+           //Debug.Log("rede item");
+            
+        }
+
+        if (col.tag == "Limite" && gameObject != null)
+		{			            
+            Destroy(gameObject);                     
         }
     }
 }

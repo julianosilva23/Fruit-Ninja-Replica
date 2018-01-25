@@ -5,12 +5,8 @@ using UnityEngine;
 public class Rede : MonoBehaviour
 {
 
-    Rigidbody2D rb;
-
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
-        Debug.Log("rede");
     }
 
     void OnTriggerEnter2D(Collider2D col)
