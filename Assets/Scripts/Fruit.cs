@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Fruit : MonoBehaviour {
-	
+
+    bool corte = false;
 	public float startForce = 15f;
 
 	Rigidbody2D rb;
@@ -14,23 +15,25 @@ public class Fruit : MonoBehaviour {
 		rb.AddForce(transform.up * startForce, ForceMode2D.Impulse);
 	}
 
+    void Update ()
+    {
+        if(corte == true){
+            if(gameObject.transform.localScale.x > 0){
+            gameObject.transform.localScale -= new Vector3(Time.deltaTime * 2, Time.deltaTime * 2, Time.deltaTime * 2);            
+            }else{
+                Destroy(gameObject, 1.0f);
+            }
+        }
+    }
 	void OnTriggerEnter2D (Collider2D col)
 	{
 		if (col.tag == "Blade")
 		{
-			//Vector3 direction = (col.transform.position - transform.position).normalized;
-            
-            //while(gameObject.transform.localScale.x > 0)
-            //{
-                gameObject.transform.localScale -= new Vector3(0.2f, 0.2f, 0.2f);
-                Debug.Log(transform.localScale.x);
-            //}
-            
-
-
-            gameObject.GetComponent<Collider2D>().enabled = false;
-            Destroy(gameObject, 1.0f);
+			
+            corte = true;
+            gameObject.GetComponent<Collider2D>().enabled = false;            
+                           
         }
     }
-
 }
+

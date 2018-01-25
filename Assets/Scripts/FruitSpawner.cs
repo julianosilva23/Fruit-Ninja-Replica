@@ -26,7 +26,7 @@ public class FruitSpawner : MonoBehaviour {
 			Transform spawnPoint = spawnPoints[spawnIndex];
 
 			GameObject spawnedFruit = Instantiate(fruitPrefab, spawnPoint.position, spawnPoint.rotation);
-			Destroy(spawnedFruit, 5f);
+			//Destroy(spawnedFruit, 5f);
 		}
 	}
 	
